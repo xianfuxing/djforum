@@ -1,2 +1,5 @@
 *.pyc
 db.sqlite3
+
+# 忽略头像图片目录
+media/
