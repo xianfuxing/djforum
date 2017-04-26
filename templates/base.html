@@ -127,12 +127,12 @@
                     </li>
                     {% if request.user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'users:detail' request.user.username %}"><img
+                            <a class="nav-link" href="{#{% url 'users:detail' request.user.username %}#}"><img
                                     src="{{ request.user.mugshot_thumbnail.url }}" alt=""
                                     style="width: 26px;"> {{ request.user.nickname }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'users:profile' %}">设置</a>
+                            <a class="nav-link" href="{#{% url 'users:profile' %}#}">设置</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'account_logout' %}?next={{ request.path }}">登出</a>
@@ -160,13 +160,13 @@
                             <ul class="list-group mb-2">
                                 <li class="list-group-item">
                                     <div class="media">
-                                        <a class="media-left" href="{{ request.user.get_absolute_url }}">
+                                        <a class="media-left" href="{#{{ request.user.get_absolute_url }}#}">
                                             <img class="media-object" src="{{ request.user.mugshot_thumbnail.url }}"
                                                  alt=""
                                                  style="width: 48px;">
                                         </a>
                                         <div class="media-body media-middle">
-                                            <a href="{{ request.user.get_absolute_url }}">{{ request.user.nickname }}</a>
+                                            <a href="{#{{ request.user.get_absolute_url }}#}">{{ request.user.nickname }}</a>
                                         </div>
                                     </div>
                                 </li>
