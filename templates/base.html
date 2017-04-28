@@ -116,14 +116,14 @@
                     data-target="#navbarResponsive"
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
             <div class="collapse navbar-toggleable-md" id="navbarResponsive">
-                <a class="navbar-brand" href="{#{% url 'forum:index' %}#}">django forum demo</a>
+                <a class="navbar-brand" href="{% url 'forum:index' %}">django forum demo</a>
                 <form class="form-inline float-lg-left">
                     <input class="form-control" type="text" placeholder="搜索功能正在开发中...">
                     <button class="btn btn-outline-success" type="submit">搜索</button>
                 </form>
                 <ul class="nav navbar-nav float-lg-right">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{#{% url 'forum:index' %}#}">首页 <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{% url 'forum:index' %}">首页 <span class="sr-only">(current)</span></a>
                     </li>
                     {% if request.user.is_authenticated %}
                         <li class="nav-item">
