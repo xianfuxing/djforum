@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from django.views.generic import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-from django.shortcuts import render
 
-# Create your views here.
+class UserProfileView(LoginRequiredMixin, TemplateView):
+    template_name = 'users/profile.html'
