@@ -153,3 +153,11 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/users/login/'
+
+# Email
+EMAIL_HOST = 'smtp.126.com'
+EMAIL_HOST_USER = 'xianfuxing@126.com'
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+DEFAULT_FROM_EMAIL = 'xianfuxing@126.com'

@@ -22,6 +22,7 @@ urlpatterns = [
 	url('', include('forum.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^users/', include('allauth.account.urls')),
+    url(r'^captcha/', include('captcha.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
