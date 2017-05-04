@@ -17,7 +17,7 @@ from .models import User
 
 class LoginForm(AllAuthLoginForm):
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super(LoginForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper(self)
         self.helper.form_action = 'account_login'
         self.helper.form_method = 'post'
@@ -35,7 +35,7 @@ class SignupForm(AllAuthSignupForm):
                            help_text='如果看不清验证码，请点击图片刷新')
 
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super(SignupForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper(self)
         self.helper.form_action = 'account_signup'
         self.helper.form_method = 'post'
@@ -50,7 +50,7 @@ class UserProfileForm(forms.ModelForm):
                                                           message="除了普通汉字、字母和数字外，昵称中不能包含任何特殊符号"
                                                           )])
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super(UserProfileForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper(self)
         self.helper.form_method = 'post'
         self.helper.form_action = urlresolvers.reverse('users:profile_change')
@@ -63,3 +63,9 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('nickname', 'signature')
+
+    def clean_nickname(self):
+        nickname = self.cleaned_data['nickname']
+        if len(nickname) > 10:
+            raise forms.ValidationError("昵称长度不能超过10个字符")
+        return nickname
