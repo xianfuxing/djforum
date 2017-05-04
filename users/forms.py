@@ -43,3 +43,23 @@ class SignupForm(AllAuthSignupForm):
 
         self.fields['username'].help_text = '用户名只能包含数字和字母'
         self.fields['password1'].help_text = '不能使用纯数字作为密码，至少8个字符'
+
+
+class UserProfileForm(forms.ModelForm):
+    nickname = forms.CharField(validators=[RegexValidator(regex=r'^[a-zA-Z0-9\u4e00-\u9fa5]+$',
+                                                          message="除了普通汉字、字母和数字外，昵称中不能包含任何特殊符号"
+                                                          )])
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
+        self.helper.form_method = 'post'
+        self.helper.form_action = urlresolvers.reverse('users:profile_change')
+        self.helper.add_input(Submit('submit', '确认修改'))
+
+        self.fields['nickname'].label = '昵称'
+        self.fields['nickname'].help_text = '除了汉字、字母和数字外，昵称中不能包含任何特殊符号'
+        self.fields['signature'].label = '个性签名'
+
+    class Meta:
+        model = User
+        fields = ('nickname', 'signature')
