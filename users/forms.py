@@ -69,3 +69,18 @@ class UserProfileForm(forms.ModelForm):
         if len(nickname) > 10:
             raise forms.ValidationError("昵称长度不能超过10个字符")
         return nickname
+
+
+class MugshotForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('mugshot',)
+
+    def __init__(self, *args, **kwargs):
+        super(MugshotForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
+        self.helper.form_method = 'post'
+        self.helper.form_class = 'mt-1'
+        self.helper.form_action = urlresolvers.reverse('users:mugshot_change')
+        self.helper.add_input(Submit('submit', '开始上传'))
+        self.fields['mugshot'].label = '头像'
