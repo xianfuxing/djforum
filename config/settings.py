@@ -141,6 +141,7 @@ AUTHENTICATION_BACKENDS = (
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_ADAPTER = 'allauth.account.adapter.DefaultAccountAdapter'
+ACCOUNT_USERNAME_VALIDATORS = 'users.validators.validator_list'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_FORMS = {
@@ -148,8 +149,8 @@ ACCOUNT_FORMS = {
     'signup': 'users.forms.SignupForm',
 }
 ACCOUNT_USERNAME_MIN_LENGTH = 3
-ACCOUNT_USER_MODEL_USERNAME_FIELD = 'nickname'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+# ACCOUNT_USER_MODEL_USERNAME_FIELD = 'nickname'
 # ACCOUNT_USERNAME_BLACKLIST  = ['fuck', 'shit']
 
 LOGIN_REDIRECT_URL = '/'

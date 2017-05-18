@@ -41,7 +41,7 @@ class SignupForm(AllAuthSignupForm):
         self.helper.form_method = 'post'
         self.helper.add_input(Submit('submit', '注册'))
 
-        self.fields['username'].help_text = '用户名只能包含数字和字母'
+        self.fields['username'].help_text = '用户名只能包含数字、字母和中文'
         self.fields['password1'].help_text = '不能使用纯数字作为密码，至少8个字符'
 
 
