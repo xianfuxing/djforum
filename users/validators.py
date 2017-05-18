@@ -1,4 +1,3 @@
-import re
 from django.core.validators import RegexValidator, MaxLengthValidator
 from django.utils.translation import ugettext_lazy as _
 
